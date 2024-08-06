@@ -2,14 +2,14 @@ data class Post(
     val idPost: Int = 0, // Эдентификатор поста
     val idOwner: Int = 0, // Эдентификатор владельца стены
     val idFromm: Int = 0, // Эдентификатор автора записи
-    var textPost: String = "", // Текст поста
+    var textPost: String? = null, // Текст поста
     val datePostt: String = "01-01-2001", // Дата публикации
     val copyright: String = "", // Источник материяла
-    var markedAsAds: Boolean = false, // Содержит ли запись рекламу
+    var markedAsAds: Boolean? = null, // Содержит ли запись рекламу
     var canPin: Boolean = false, // Может ли текущий пользователь закрепит запись
     var canDelete: Boolean = false, // Может ли текущий пользователь удалить запись
     var canEdit: Boolean = true, // Может ли текущий пользователь изменить запись
-    var likes: Int = 0, // Информация о лайках к записи
+    var likes: Int? = null, // Информация о лайках к записи
     var comments : Comments = Comments() //
 )
 class Comments(
