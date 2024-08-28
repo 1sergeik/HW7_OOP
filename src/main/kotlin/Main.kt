@@ -1,3 +1,5 @@
+import attachments.*
+
 data class Post(
     val idPost: Int = 0, // Эдентификатор поста
     val idOwner: Int = 0, // Эдентификатор владельца стены
@@ -10,7 +12,8 @@ data class Post(
     var canDelete: Boolean = false, // Может ли текущий пользователь удалить запись
     var canEdit: Boolean = true, // Может ли текущий пользователь изменить запись
     var likes: Int? = null, // Информация о лайках к записи
-    var comments : Comments = Comments() //
+    var comments : Comments = Comments(), //
+    var attachments: List<Attachment> = listOf()
 )
 class Comments(
     var countComments: Int = 0, // Количество комментариев
@@ -63,12 +66,19 @@ object WallService {
 
 
 fun main() {
-    val post1 = WallService.addPost(Post(likes = 10))
+    val photo = Photo(id = 1)
+    val audio = Audio(id = 2)
+    val video = Video(id = 3)
+    val file = File(id = 4)
+    val post = Post(attachments = listOf(PhotoAttachment(photo),AudioAttachment(audio), VideoAttachment(video), FileAttachment(file)))
 
-    val post2 = Post(idPost = 0, likes = 5)
-    WallService.addPost(post2)
-    WallService.printArray()
 
-    WallService.update(Post(idPost = 1, idOwner = 1))
-    WallService.printArray()
+//    val post1 = WallService.addPost(Post(likes = 10))
+//
+//    val post2 = Post(idPost = 0, likes = 5)
+//    WallService.addPost(post2)
+//    WallService.printArray()
+//
+//    WallService.update(Post(idPost = 1, idOwner = 1))
+//    WallService.printArray()
 }
