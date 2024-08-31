@@ -1,10 +1,10 @@
 package attachments
 
-interface Attachment {
-    var type: String
+abstract class Attachment {
+    abstract var type: String
 
 }
-class PhotoAttachment(photo: Photo) : Attachment {
+class PhotoAttachment(photo: Photo) : Attachment() {
     override var type = photo.type
 
 }
@@ -18,7 +18,7 @@ class Photo (
     val width: Int? = null,
     val height: Int? = null
 
-) : Attachment
+) : Attachment()
 
 class Audio(
     override var type: String = "Audio",
@@ -30,9 +30,9 @@ class Audio(
     val url: String? = null,
     val noSearch: Boolean? = null,
     val isHd: Boolean? = false
-) : Attachment
+) : Attachment()
 
-class AudioAttachment(audio: Audio) : Attachment {
+class AudioAttachment(audio: Audio) : Attachment() {
     override var type: String = audio.type
 }
 
@@ -47,9 +47,9 @@ class Video(
     val noSearch: Boolean? = null,
     val player: String? = null
 
-): Attachment
+): Attachment()
 
-class VideoAttachment(video:Video) : Attachment {
+class VideoAttachment(video:Video) : Attachment() {
     override var type: String = video.type
 }
 
@@ -64,8 +64,8 @@ class File(
     val noSearch: Boolean? = null,
     val typefile: String? = null,
 
-): Attachment
+): Attachment()
 
-class FileAttachment(file:File) : Attachment {
+class FileAttachment(file:File) : Attachment() {
     override var type: String = file.type
 }
